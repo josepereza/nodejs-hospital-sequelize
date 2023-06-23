@@ -32,7 +32,8 @@ module.exports = function (models) {
     // Muestra la informacion de un paciente
     module.read = async function(patient_id) {
         // Rellene aqui ...
-        return Patient.findOne({where:{id:patient_id},})
+        //return Patient.findOne({where:{id:patient_id},})
+        return Patient.findByPk(patient_id)
     }
 
     // Crea un paciente en un hospital
@@ -69,7 +70,7 @@ module.exports = function (models) {
          console.log('patient-doctor',paciente.name)
         await paciente.addDoctor(doctor,{ through: { selfGranted: false } })
       
-        return Patient.findOne({where:{id:patient_id},})
+        return Patient.findByPk(patient_id)
     }
 
     // Muestras los medicos de un paciente
